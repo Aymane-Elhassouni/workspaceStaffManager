@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+.size1{
+    width: 537px;
+    height: 273px;
+}
+
+.size2{
+    width: 257px;
+    height: 222px;
+}
+
+.size3{
+    width: 261px;
+    height: 227px;
+}
+
+.size4{
+    width: 537px;
+    height: 538px;
+}
+
+.size5{
+    width: 261px;
+    height: 221px;
+}
+
+.size6{
+    width: 264px;
+    height: 228px;
+}
