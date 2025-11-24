@@ -7,14 +7,15 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-200: oklch(88.5% 0.062 18.334);
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-600: oklch(57.7% 0.245 27.325);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-900: oklch(21% 0.034 264.665);
+    --color-gray-950: oklch(13% 0.028 261.692);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-lg: 32rem;
@@ -346,6 +347,15 @@
       background-color: color-mix(in oklab, var(--color-gray-500) 75%, transparent);
     }
   }
+  .bg-gray-950\/5 {
+    background-color: color-mix(in srgb, oklch(13% 0.028 261.692) 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-gray-950) 5%, transparent);
+    }
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
+  }
   .bg-transparent {
     background-color: transparent;
   }
@@ -364,11 +374,17 @@
   .p-5 {
     padding: calc(var(--spacing) * 5);
   }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -477,6 +493,16 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-50);
+      }
+    }
+  }
+  .hover\:bg-gray-950\/10 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, oklch(13% 0.028 261.692) 10%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-gray-950) 10%, transparent);
+        }
       }
     }
   }
@@ -636,27 +662,27 @@
   }
 }
 .size1 {
-  width: 537px;
+  width: 100%;
   height: 273px;
 }
 .size2 {
-  width: 257px;
+  width: 100%;
   height: 222px;
 }
 .size3 {
-  width: 261px;
+  width: 100%;
   height: 227px;
 }
 .size4 {
-  width: 537px;
+  width: 100%;
   height: 538px;
 }
 .size5 {
-  width: 261px;
+  width: 100%;
   height: 221px;
 }
 .size6 {
-  width: 264px;
+  width: 100%;
   height: 228px;
 }
 @property --tw-rotate-x {
