@@ -84,20 +84,10 @@ inputExper.addEventListener("blur", (event) => {
   }
 });
 
-let employe = [];
+let employes = [];
 
-/* form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Empêche la soumission par défaut du formulaire
 
-  // Créez un objet avec les valeurs des champs du formulaire
-  
-
-  employe.push(newObject);
-
-  console.log(employe);
-}); */
-
-function ajouterEmploye() {
+function ajouterEmployes() {
   const newEmploye = {
     nom: inputNom.value,
     role: inputRole.value,
@@ -112,7 +102,7 @@ function ajouterEmploye() {
     inputTelError.innerText == "input is valide" &&
     inputExperError.innerText == "input is valide"
   ) {
-    employe.push(newEmploye);
+    employes.push(newEmploye);
   }
   document.querySelectorAll('input[data-unique="true"]').forEach((input) => {
     input.addEventListener("blur", (event) => {
@@ -125,24 +115,6 @@ function ajouterEmploye() {
       }
     });
   });
-  /* document.getElementById("card").innerHTML += `
-        <div
-          class="bg-white p-5 shadow-lg inset-shadow-sm hover:shadow-xl hover:inset-shadow-5xs mt-5 rounded-lg"
-        >
-          <img
-            class="place-self-center border rounded-lg"
-            src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1536-1760996213.png"
-            alt="https://intranet.youcode.ma/storage/users/profile/thumbnail/1536-1760996213.png"
-          />
-          <div class="mt-3">${inputNom.value}</div>
-          <div class="mt-3">${inputRole.value}</div>
-          <button
-            type="button"
-            class="text-white text-sm bg-blue-400 rounded-lg p-2 w-30 mt-3 place-self-center"
-          >
-            Edit
-          </button>
-        </div>` */
 }
 const experiences = `<label for="" class="mt-2">Expériences professionnelles</label>
                 <input
@@ -158,7 +130,6 @@ document.getElementById("epxer").addEventListener("click", (event) => {
 });
 
 document.getElementById("btn").addEventListener("click", (event) => {
-  /* event.preventDefault() */
   if (
     inputNomError.innerText == "input is empty" ||
     inputNomError.innerText == "input is not valide" ||
@@ -179,11 +150,6 @@ document.getElementById("btn").addEventListener("click", (event) => {
     alert("Name must be filled out");
     event.preventDefault();
   } else if (
-  /* if(inputRoleError.innerText == "input is empty" ||inputRoleError.innerText == "input is not valide"){
-        alert("Name must be filled out");
-        event.preventDefault();
-        console.log(false);
-    } */
     inputNomError.innerText == "input is valide" &&
     inputRoleError.innerText == "input is valide" &&
     inputEmailError.innerText == "input is valide" &&
@@ -191,7 +157,7 @@ document.getElementById("btn").addEventListener("click", (event) => {
     inputExperError.innerText == "input is valide"
   ) {
     event.preventDefault();
-    ajouterEmploye();
+    ajouterEmployes();
     afficherEmpoile();
     clearValue();
   }
@@ -205,7 +171,7 @@ function clearValue() {
   inputExper.value = "";
 }
 function afficherEmpoile() {
-  employe.forEach((Employe) => {
+  employes.forEach((Employe) => {
     cradPerson = `
         <div data-unique="${Employe.email}"
           class="bg-white p-5 shadow-lg inset-shadow-sm hover:shadow-xl hover:inset-shadow-5xs mt-5 rounded-lg" >
@@ -229,9 +195,46 @@ function afficherEmpoile() {
 zones.forEach((zone) => {
   zone.addEventListener("click", (event) => {
     zoneTargeted = event.target.getAttribute("id");
-    
-    employe.forEach((Employe) => {
-    cradZone = `
+    document.getElementById("zoneCard").innerHTML = "";
+    employes.forEach((Employe) => {
+     if(zoneTargeted == "zone1" && Employe.role == "Réceptionniste"){
+      let evenemployes = employes.filter(e => e.role == "Réceptionniste");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+     if(zoneTargeted == "zone2" && Employe.role == "Technicien IT"){
+      let evenemployes = employes.filter(e => e.role == "Technicien IT");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+     if(zoneTargeted == "zone3" && Employe.role == "Agent de sécurité"){
+      let evenemployes = employes.filter(e => e.role == "Agent de sécurité");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+     if(zoneTargeted == "zone4" && Employe.role == "Manager"){
+      let evenemployes = employes.filter(e => e.role == "Manager");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+     if(zoneTargeted == "zone5" && Employe.role == "Nettoyage"){
+      let evenemployes = employes.filter(e => e.role == "Nettoyage");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+     if(zoneTargeted == "zone6" && Employe.role == "Autres rôles"){
+      let evenemployes = employes.filter(e => e.role == "Autres rôles");
+      afficherEmpoileToZone(Employe);
+      console.log(evenemployes);
+     }
+      
+    });
+  });
+});
+
+function afficherEmpoileToZone(Employe) {
+  document.getElementById("zoneCard").innerHTML = "";
+  cradZone = `
         <div data-unique="${Employe.email}"
           class="bg-white p-5 shadow-lg inset-shadow-sm hover:shadow-xl hover:inset-shadow-5xs mt-5 rounded-lg" >
           <img
@@ -246,12 +249,6 @@ zones.forEach((zone) => {
             Edit
           </button>
         </div>`;
-  });
 
-  document.getElementById("zoneCard").insertAdjacentHTML("beforeend", cradZone);
-        console.log(employe);
-        
-  });
-});
-
-
+  document.getElementById("zoneCard").innerHTML += cradZone;
+}
